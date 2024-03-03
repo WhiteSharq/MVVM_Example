@@ -1,0 +1,108 @@
+﻿<Window x:Class="WS.Views.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WS.Views.WPF"
+        xmlns:vms="clr-namespace:WS.ViewModels;assembly=WS.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        MinHeight="400"
+        MinWidth="250"
+        Height="400"
+        Width="250"        
+        WindowStartupLocation="CenterScreen"
+        d:DataContext="{d:DesignInstance {x:Type vms:MainViewModel}, IsDesignTimeCreatable=False}"
+        >
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="100" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition MinHeight="25" MaxHeight="25" />
+            <RowDefinition Height="*" />
+            <RowDefinition MinHeight="25" MaxHeight="25" />
+            <RowDefinition MinHeight="25" MaxHeight="25" />
+            <RowDefinition MinHeight="25" MaxHeight="25" />
+        </Grid.RowDefinitions>
+        
+        <TextBox
+            Grid.Row="0"
+            Grid.RowSpan="1"
+            VerticalContentAlignment="Center"
+            HorizontalContentAlignment="Center"
+            Text=
+            "{
+                Binding NameFilter,
+                Mode=TwoWay,
+                UpdateSourceTrigger=PropertyChanged
+            }"
+            ></TextBox>
+        
+        <ListView
+            Grid.Row="1" Grid.RowSpan="1"
+            SelectedItem=
+            "{
+                Binding SelectedEntity,
+                Mode=TwoWay,
+                UpdateSourceTrigger=PropertyChanged
+            }"
+            ItemsSource=
+            "{
+                Binding Entities,
+                Mode=OneWay,
+                UpdateSourceTrigger=PropertyChanged
+            }"
+            >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Path=AsString, Mode=OneTime}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+        <Button
+            Grid.Row="2"
+            Grid.RowSpan="1"
+            HorizontalAlignment="Stretch"
+            Command=
+            "{
+                Binding GetEntitiesCommand,
+                Mode=OneTime
+            }"
+            CommandParameter=
+            "{
+                Binding NameFilter,
+                Mode=TwoWay,
+                UpdateSourceTrigger=PropertyChanged
+            }"
+            Content="Query"
+            ></Button>
+
+        <Button
+            Grid.Row="3"
+            Grid.RowSpan="1"
+            HorizontalAlignment="Stretch"
+            Command=
+            "{
+                Binding ZoomEntityCommand,
+                Mode=OneTime
+            }"
+            CommandParameter="{Binding}"
+            Content="Zoom"
+            ></Button>
+
+        <Button
+            Grid.Row="4"
+            Grid.RowSpan="1"
+            HorizontalAlignment="Stretch"
+            Command=
+            "{
+                Binding PickEntitiesCommand,
+                Mode=OneTime
+            }"
+            CommandParameter="{Binding}"
+            Content="Pick"
+            ></Button>
+    </Grid>
+</Window>
