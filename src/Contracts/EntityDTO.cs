@@ -11,9 +11,9 @@
             Location = location;
         }
 
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public PointDTO? Location { get; set; }
+        public string Id { get; }
+        public string Name { get; }
+        public PointDTO? Location { get; }
 
         public bool Equals(EntityDTO? other)
         {
@@ -27,11 +27,9 @@
 
         public override bool Equals(object? obj)
         {
-            return
-                obj is EntityDTO other
-                && Equals(other);
+            return Equals(obj as EntityDTO);
         }
 
-        public override int GetHashCode() => 0;
+        public override int GetHashCode() => Id.GetHashCode();
     }
 }
