@@ -30,12 +30,21 @@ public class ShowMainWindowCommand : IExternalCommand
             .Application
             .ActiveUIDocument;
 
+        var app = commandData
+            .Application
+            .Application;
+
         var container = ConfigureUI();
 
+        container.RegisterInstance(app);
         container.RegisterInstance(uiDocument);
+
         container.Register<IGetEntities, GetElementsService>();
         container.Register<IPickEntities, PickElementsService>();
         container.Register<IZoomEntity, ZoomElementService>();
+        container.Register<IWatchDocument, WatchDocumentService>();
+        container.Register<IDeleteEnitity, DeleteElementService>();
+        container.Register<ElementToDTOConverter>();
 
         var window = container
             .GetInstance<MainWindow>();
