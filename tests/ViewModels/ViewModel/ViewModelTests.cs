@@ -74,9 +74,9 @@ namespace WS.ViewModel
                     .OrderBy(e => e)
                     .ToArray();
 
-                ordered.Zip(vm.Entities)
+                ordered.Zip(vm.Entities, (o, vm) => (o, vm))
                     .ToList()
-                    .ForEach(t => Assert.That(t.First, Is.SameAs(t.Second)));
+                    .ForEach(t => Assert.That(t.o, Is.SameAs(t.vm)));
             }
         }
 

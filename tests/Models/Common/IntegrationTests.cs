@@ -13,6 +13,7 @@ namespace WS.Models
         public IPickEntities PickEntitiesService { get; protected set; }
         public IZoomEntity ZoomEntityService { get; protected set; }
         public IWatchDocument WatchDocumentService { get; protected set; }
+        public ICanHandleRequest HttpModelApi { get; protected set; }
 
         [SetUp]
         public void Setup()

@@ -43,6 +43,7 @@
     <Compile Include="GetElementProperties.cs" />
     <Compile Include="GetParameterValueService.cs" />
     <Compile Include="PickElementsService.cs" />
+    <Compile Include="RequestDispatcher.cs" />
     <Compile Include="WatchDocumentService.cs" />
     <Compile Include="ZoomElementService.cs" />
     <Compile Include="GetElementsService.cs" />
@@ -51,6 +52,12 @@
   <ItemGroup>
     <PackageReference Include="Autodesk.Revit.SDK">
       <Version>2020.2.1.2001</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>9.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="System.Memory">
+      <Version>4.5.5</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

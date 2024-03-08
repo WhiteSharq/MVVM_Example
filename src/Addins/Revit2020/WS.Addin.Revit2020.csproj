@@ -39,6 +39,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StartServerCommand.cs" />
     <Compile Include="ShowMainWindowCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -58,6 +59,10 @@
     <ProjectReference Include="..\..\Models\Revit2020\WS.Models.Revit2020.csproj">
       <Project>{4ba1ef0b-be1b-446e-9bdc-602ebb00e17f}</Project>
       <Name>WS.Models.Revit2020</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Remote\HttpServer\WS.HttpServer.csproj">
+      <Project>{449e4551-6da5-4771-a9f8-f2d92eec9af1}</Project>
+      <Name>WS.HttpServer</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\ViewModels\WS.ViewModels.csproj">
       <Project>{cc6b3e7c-4e03-4ead-a62b-084d846096f9}</Project>
